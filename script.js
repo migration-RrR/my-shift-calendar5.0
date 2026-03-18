@@ -216,6 +216,30 @@ const themeBtn = document.getElementById("theme-toggle");
 let savedTheme = localStorage.getItem("theme");
 if(savedTheme === "light"){
   document.body.classList.add("light");
+  themeBtn.textContent = "🌕"; // светлая тема — показываем луну для переключения
+}else{
+  themeBtn.textContent = "☀️"; // тёмная тема — показываем солнце
+}
+
+// Клик по кнопке для переключения темы
+if(themeBtn){
+  themeBtn.onclick = ()=>{
+    document.body.classList.toggle("light"); // переключаем класс
+
+    if(document.body.classList.contains("light")){
+      localStorage.setItem("theme","light");
+      themeBtn.textContent = "🌕"; // светлая — показываем луну
+    } else {
+      localStorage.setItem("theme","dark");
+      themeBtn.textContent = "☀️"; // тёмная — показываем солнце
+    }
+  };
+}
+
+// Проверяем сохранённую тему
+let savedTheme = localStorage.getItem("theme");
+if(savedTheme === "light"){
+  document.body.classList.add("light");
 }
 
 // Клик по кнопке для переключения темы
